@@ -3,7 +3,9 @@ n, m = map(int, input().split()) # input().split()을 하면 값을 두 개 받�
 a = [] # 빈 리스트 생성
 def rec():
     if len(a) == m: # 리스트 길이가 m 길이와 같으면 출력
-        print(*a)
+        b = a[:]
+        b.sort()
+        print(*b)
         return # 재귀
  
     for i in range(1, n+1): # 'a' 리스트 안에 수열 만들기
