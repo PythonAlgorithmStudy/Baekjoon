@@ -9,18 +9,20 @@ class MyCircularDeque:
         self.k, self.len = k, 0
         self.head.right, self.tail.left = self.tail, self.head
 
-## 이중 연결 리스트에 신규 노드 삽입
+## 신규 노드 삽입
     def _add(self, node: ListNode, new: ListNode):
-        n = node.right ### 이 부분만 이해가 안된다 왜 갑자기 n이 나타난거지? 흠..? n이 무조건 node 오른쪽에 있는 것을 뜻하는 건가?
+        n = node.right 
         node.right = new
         new.left, new.rigth = node, n
         n.left = new
-    
+
+## 신규 노드 삭제    
     def _del(self, node: ListNode):
         n = node.right.right
         node.right = n
         n.left = node
     
+## 연산    
     def insertFront(self, value: int) -> bool:
         if self.len == self.k:
             return False
@@ -29,7 +31,7 @@ class MyCircularDeque:
         return True
 
     def insertLast(self, value: int) -> bool:
-        if self.len == self.k: # 리스트 길이 판별
+        if self.len == self.k: # 데크 길이 판별
             return False
         self.len += 1 # 
         self._add(self.tail.left, ListNode(value)) 
